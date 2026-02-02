@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Ways Public School - Excellence in Education</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            50: '#FFFBEB',
+                            100: '#FEF3C7',
+                            200: '#FDE68A',
+                            300: '#FCD34D',
+                            400: '#FBBF24',
+                            500: '#F59E0B',
+                            600: '#D97706',
+                            700: '#B45309',
+                            800: '#92400E',
+                            900: '#78350F',
+                        },
+                        navy: {
+                            800: '#1E293B',
+                            900: '#0F172A',
+                            950: '#020617',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'spin-slow': 'spin 12s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .hero-pattern {
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .nav-scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased bg-gray-50">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full flex items-center justify-center shadow-lg">
+                        <i class="fas fa-graduation-cap text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-serif font-bold text-white nav-text transition-colors">GWPS</h1>
+                        <p class="text-xs text-gold-200 nav-text-sub transition-colors">Golden Ways Public School</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-white hover:text-gold-300 transition-colors font-medium">Home</a>
+                    <a href="#about" class="nav-link text-white hover:text-gold-300 transition-colors font-medium">About</a>
+                    <a href="#programs" class="nav-link text-white hover:text-gold-300 transition-colors font-medium">Programs</a>
+                    <a href="#facilities" class="nav-link text-white hover:text-gold-300 transition-colors font-medium">Facilities</a>
+                    <a href="#admissions" class="nav-link text-white hover:text-gold-300 transition-colors font-medium">Admissions</a>
+                    <a href="#contact" class="px-6 py-2 bg-gold-500 hover:bg-gold-600 text-white rounded-full transition-all transform hover:scale-105 font-medium shadow-lg">Contact Us</a>
+                </div>
+
+                <button id="mobile-menu-btn" class="md:hidden text-white nav-text">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white absolute w-full shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#home" class="block px-3 py-2 text-gray-800 hover:bg-gold-50 hover:text-gold-600 rounded-md">Home</a>
+                <a href="#about" class="block px-3 py-2 text-gray-800 hover:bg-gold-50 hover:text-gold-600 rounded-md">About</a>
+                <a href="#programs" class="block px-3 py-2 text-gray-800 hover:bg-gold-50 hover:text-gold-600 rounded-md">Programs</a>
+                <a href="#facilities" class="block px-3 py-2 text-gray-800 hover:bg-gold-50 hover:text-gold-600 rounded-md">Facilities</a>
+                <a href="#contact" class="block px-3 py-2 text-gold-600 font-semibold">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy-950">
+        <div class="absolute inset-0 hero-pattern opacity-20"></div>
+        
+        <!-- Animated Background Elements -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-gold-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-block mb-4 px-4 py-1 rounded-full bg-gold-500/20 border border-gold-500/30 text-gold-300 text-sm font-semibold tracking-wide uppercase animate-fade-in-up">
+                Est. 1995 • Excellence in Education
+            </div>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight animate-fade-in-up" style="animation-delay: 0.1s;">
+                Shaping Future <br>
+                <span class="gradient-text">Leaders Today</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto font-light animate-fade-in-up" style="animation-delay: 0.2s;">
+                Golden Ways Public School provides a nurturing environment where academic excellence meets character development, preparing students for a bright tomorrow.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style="animation-delay: 0.3s;">
+                <a href="#admissions" class="px-8 py-4 bg-gradient-to-r from-gold-500 to-gold-600 text-white rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all flex items-center justify-center gap-2">
+                    <span>Apply Now</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#about" class="px-8 py-4 glass-effect text-white rounded-full font-semibold text-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Virtual Tour</span>
+                </a>
+            </div>
+            
+            <!-- Stats -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto animate-fade-in-up" style="animation-delay: 0.4s;">
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-gold-400">25+</div>
+                    <div class="text-gray-400 text-sm mt-1">Years of Excellence</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-gold-400">2000+</div>
+                    <div class="text-gray-400 text-sm mt-1">Students</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-gold-400">150+</div>
+                    <div class="text-gray-400 text-sm mt-1">Expert Faculty</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-gold-400">98%</div>
+                    <div class="text-gray-400 text-sm mt-1">Success Rate</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-white/50 hover:text-white transition-colors">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <div class="relative">
+                        <div class="absolute -top-4 -left-4 w-24 h-24 bg-gold-100 rounded-full -z-10"></div>
+                        <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-blue-100 rounded-full -z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop" alt="School Campus" class="rounded-2xl shadow-2xl w-full object-cover h-[500px]">
+                        <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-xl max-w-xs hidden md:block">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gold-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-award text-gold-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-gray-800">Top Rated School</p>
+                                    <p class="text-sm text-gray-500">District Excellence Award 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal">
+                    <h2 class="text-gold-600 font-semibold tracking-wide uppercase mb-2">About Our School</h2>
+                    <h3 class="text-4xl font-serif font-bold text-gray-900 mb-6">Building Bright Futures Through Quality Education</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Golden Ways Public School (GWPS) has been a beacon of educational excellence since 1995. We believe in holistic development, combining rigorous academics with character building, creative arts, and physical education.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Our state-of-the-art campus provides a safe, nurturing environment where every child is encouraged to explore their potential, develop critical thinking skills, and grow into responsible global citizens.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-gold-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-gold-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Certified Teachers</h4>
+                                <p class="text-sm text-gray-500">Expert educators with advanced degrees</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-gold-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-gold-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Modern Curriculum</h4>
+                                <p class="text-sm text-gray-500">STEM integrated learning approach</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-gold-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-gold-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Small Class Sizes</h4>
+                                <p class="text-sm text-gray-500">Personalized attention to each student</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-gold-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-gold-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Character Building</h4>
+                                <p class="text-sm text-gray-500">Values-based education system</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="inline-flex items-center gap-2 text-gold-600 font-semibold hover:text-gold-700 transition-colors group">
+                        Learn More About Us 
+                        <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-gold-600 font-semibold tracking-wide uppercase mb-2">Academic Programs</h2>
+                <h3 class="text-4xl font-serif font-bold text-gray-900 mb-4">Comprehensive Education Pathways</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">From early childhood through high school, we offer structured programs designed to meet the developmental needs of every age group.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Early Years -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover reveal group">
+                    <div class="h-48 bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center relative overflow-hidden">
+                        <i class="fas fa-child text-6xl text-white/30 absolute transform group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="relative z-10 text-center text-white p-6">
+                            <i class="fas fa-shapes text-4xl mb-2"></i>
+                            <h4 class="text-2xl font-bold">Early Years</h4>
+                            <p class="text-white/80">Ages 3-5</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Foundation stage focusing on social skills, basic literacy, and numeracy through play-based learning.</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center gap-2 text-sm text-gray-600">
+                                <i class="fas fa-circle text-gold-500 text-xs"></i>
+                                Montessori Methods
+                            </li>
+                            <li class="flex items-center gap-2 text-sm text-gray-600">
+                                <i class="fas fa-circle text-gold-500 text-xs"></i>
+                                Creative Play
+                            </li>
+                            <li class="flex items-center gap-2 text-sm text-gray-600">
+                                <i class="fas fa-circle text-gold-500 text-xs"></i>
+                                Motor Skills Development
+                            </li>
+                        </ul>
+                        <button class="w-full py-2 border-2 border-gold-500 text-gold-600 rounded-lg font-semibold hover:bg-gold-500 hover:text-white transition-all">Learn More</button>
+                    </div>
+                </div>
+
+                <!-- Primary School -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover reveal group" style="transition-delay: 0.1s;">
+                    <div class="h-48 bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center relative overflow-hidden">
+                        <i class="fas fa-book text-6xl text-white/30 absolute transform group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="relative z-10 text-center text-white p-6">
+                            <i class="fas fa-school text-4xl mb-2"></i>
+                            <h4 class="text-2xl font-bold">Primary School</h4>
+                            <p class="text-white/80">Grades 1-5</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Building strong academic foundations in core subjects while nurturing creativity and critical thinking.</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center gap-2 text-sm text-gray-600">
+                                <i class="fas fa-circle text-gold-500 text-xs"></i>
+                                STEM Integration
+                            </li>
+                            <li class="flex items-center gap-2 text-sm text-gray-600">
+                                <i class="fas fa-circle text-gold-500 text-xs"></i>
+                                Language Arts
+                            </li>
+                            <li class="flex items-center gap-2 text-sm text-gray-600">
+                                <i class="fas fa-circle text-gold-500 text-xs"></i>
+                                Arts & Music
+                            </li>
+                        </ul>
+                        <button class="w-full py-2 border-2 border-gold-500 text-gold-600 rounded-lg font-semibold hover:bg-gold-500 hover:text-white transition-all">Learn More</button>
+                    </div>
+                </div>
+
+                <!-- Secondary School -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover reveal group" style="transition-delay: 0.2s;">
+                    <div class="h-48 bg-gradient-to-br from-gold-400 to-orange-500 flex items-center justify-center relative overflow-hidden">
+                        <i class="fas fa-graduation-cap text-6xl text-white/30 absolute transform group-hover:scale-110 transition-transform duration-500"></i>
+                        <div class="relative z-10 text-center text-white p-6">
+                            <i class="fas fa-user-graduate text-4xl mb-2"></i>
+                            <h4 class="text-2xl font-bold">Secondary School</h4>
+                            <p class="text-white/80">Grades 6-12</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Preparing students for higher education with advanced coursework, leadership opportunities, and career guidance.</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center gap-2 text-sm text-gray-600">
+                                <i class="fas fa-circle text-gold-500 text-xs"></i>
+                                Advanced Placement
+                            </li>
+                            <li class="flex items-center gap-2 text-sm text-gray-600">
+                                <i class="fas fa-circle text-gold-500 text-xs"></i>
+                                College Counseling
+                            </li>
+                            <li class="flex items-center gap-2 text-sm text-gray-600">
+                                <i class="fas fa-circle text-gold-500 text-xs"></i>
+                                Sports & Athletics
+                            </li>
+                        </ul>
+                        <button class="w-full py-2 border-2 border-gold-500 text-gold-600 rounded-lg font-semibold hover:bg-gold-500 hover:text-white transition-all">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-gold-600 font-semibold tracking-wide uppercase mb-2">Our Campus</h2>
+                <h3 class="text-4xl font-serif font-bold text-gray-900 mb-4">World-Class Facilities</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our modern campus is designed to inspire learning, creativity, and growth.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="relative group overflow-hidden rounded-2xl h-64 reveal cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=600&h=400&fit=crop" alt="Science Lab" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6">
+                        <h4 class="text-white text-xl font-bold mb-1">Science Laboratories</h4>
+                        <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">State-of-the-art physics, chemistry, and biology labs</p>
+                    </div>
+                </div>
+
+                <div class="relative group overflow-hidden rounded-2xl h-64 reveal cursor-pointer" style="transition-delay: 0.1s;">
+                    <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=600&h=400&fit=crop" alt="Library" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6">
+                        <h4 class="text-white text-xl font-bold mb-1">Digital Library</h4>
+                        <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">50,000+ books and digital resources</p>
+                    </div>
+                </div>
+
+                <div class="relative group overflow-hidden rounded-2xl h-64 reveal cursor-pointer" style="transition-delay: 0.2s;">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=400&fit=crop" alt="Sports" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6">
+                        <h4 class="text-white text-xl font-bold mb-1">Sports Complex</h4>
+                        <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">Olympic-size pool, basketball courts, and football field</p>
+                    </div>
+                </div>
+
+                <div class="relative group overflow-hidden rounded-2xl h-64 reveal cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop" alt="Computer Lab" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6">
+                        <h4 class="text-white text-xl font-bold mb-1">Tech Center</h4>
+                        <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">Latest computers and coding facilities</p>
+                    </div>
+                </div>
+
+                <div class="relative group overflow-hidden rounded-2xl h-64 reveal cursor-pointer" style="transition-delay: 0.1s;">
+                    <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=600&h=400&fit=crop" alt="Arts Studio" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6">
+                        <h4 class="text-white text-xl font-bold mb-1">Arts & Music Studio</h4>
+                        <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">Creative spaces for visual and performing arts</p>
+                    </div>
+                </div>
+
+                <div class="relative group overflow-hidden rounded-2xl h-64 reveal cursor-pointer" style="transition-delay: 0.2s;">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=400&fit=crop" alt="Cafeteria" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6">
+                        <h4 class="text-white text-xl font-bold mb-1">Cafeteria</h4>
+                        <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">Nutritious meals and dining hall</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions Section -->
+    <section id="admissions" class="py-20 bg-navy-900 relative overflow-hidden">
+        <div class="absolute inset-0 hero-pattern opacity-10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <h2 class="text-gold-400 font-semibold tracking-wide uppercase mb-2">Admissions</h2>
+                    <h3 class="text-4xl font-serif font-bold text-white mb-6">Join the GWPS Family</h3>
+                    <p class="text-gray-300 mb-8 leading-relaxed">
+                        We welcome applications from families who share our commitment to academic excellence and character development. Our admissions process is designed to identify students who will thrive in our challenging, supportive environment.
+                    </p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center gap-4 bg-white/5 p-4 rounded-lg border border-white/10">
+                            <div class="w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center text-white font-bold">1</div>
+                            <div>
+                                <h4 class="text-white font-semibold">Submit Application</h4>
+                                <p class="text-gray-400 text-sm">Complete online application form</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 bg-white/5 p-4 rounded-lg border border-white/10">
+                            <div class="w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center text-white font-bold">2</div>
+                            <div>
+                                <h4 class="text-white font-semibold">Assessment</h4>
+                                <p class="text-gray-400 text-sm">Entrance test and interview</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 bg-white/5 p-4 rounded-lg border border-white/10">
+                            <div class="w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center text-white font-bold">3</div>
+                            <div>
+                                <h4 class="text-white font-semibold">Enrollment</h4>
+                                <p class="text-gray-400 text-sm">Complete registration and join us</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <button class="px-8 py-3 bg-gold-500 hover:bg-gold-600 text-white rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg">
+                            Download Prospectus
+                        </button>
+                        <button class="px-8 py-3 border-2 border-white/30 text-white hover:bg-white/10 rounded-full font-semibold transition-all">
+                            Fee Structure
+                        </button>
+                    </div>
+                </div>
+
+                <div class="reveal bg-white rounded-2xl p-8 shadow-2xl">
+                    <h4 class="text-2xl font-bold text-gray-800 mb-6">Request Information</h4>
+                    <form class="space-y-4" onsubmit="event.preventDefault(); alert('Thank you for your interest! We will contact you soon.');">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent outline-none transition-all" placeholder="John">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent outline-none transition-all" placeholder="Doe">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input type="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent outline-none transition-all" placeholder="parent@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                            <input type="tel" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent outline-none transition-all" placeholder="+1 234 567 890">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Interested Grade</label>
+                            <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent outline-none transition-all">
+                                <option>Select Grade Level</option>
+                                <option>Early Years (3-5 years)</option>
+                                <option>Grade 1-5</option>
+                                <option>Grade 6-8</option>
+                                <option>Grade 9-12</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                            <textarea rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent outline-none transition-all" placeholder="Tell us about your child..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-gold-500 hover:bg-gold-600 text-white rounded-lg font-semibold transition-all transform hover:scale-[1.02] shadow-lg">
+                            Submit Inquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-gold-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-gold-600 font-semibold tracking-wide uppercase mb-2">Testimonials</h2>
+                <h3 class="text-4xl font-serif font-bold text-gray-900">What Parents Say</h3>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg reveal relative">
+                    <i class="fas fa-quote-left text-4xl text-gold-200 absolute top-4 left-4"></i>
+                    <p class="text-gray-600 mb-6 relative z-10 pt-4">"Golden Ways has transformed my daughter's confidence. The teachers are incredibly supportive and the academic standards are exceptional."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Parent" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Sarah Johnson</h4>
+                            <p class="text-sm text-gray-500">Parent of Grade 5 Student</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg reveal relative" style="transition-delay: 0.1s;">
+                    <i class="fas fa-quote-left text-4xl text-gold-200 absolute top-4 left-4"></i>
+                    <p class="text-gray-600 mb-6 relative z-10 pt-4">"The balance between academics and extracurricular activities is perfect. My son has developed leadership skills I never knew he had."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Parent" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Michael Chen</h4>
+                            <p class="text-sm text-gray-500">Parent of Grade 8 Student</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg reveal relative" style="transition-delay: 0.2s;">
+                    <i class="fas fa-quote-left text-4xl text-gold-200 absolute top-4 left-4"></i>
+                    <p class="text-gray-600 mb-6 relative z-10 pt-4">"As an alumnus, I'm proud to send my children here. The values and education I received at GWPS shaped my entire career."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Parent" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Emily Rodriguez</h4>
+                            <p class="text-sm text-gray-500">Alumni & Parent</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="reveal">
+                    <h2 class="text-gold-600 font-semibold tracking-wide uppercase mb-2">Contact Us</h2>
+                    <h3 class="text-4xl font-serif font-bold text-gray-900 mb-6">Get in Touch</h3>
+                    <p class="text-gray-600 mb-8">We'd love to hear from you. Visit our campus, give us a call, or send us an email.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-gold-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-gold-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-1">Address</h4>
+                                <p class="text-gray-600">123 Education Lane, Academic District<br>City, State 12345</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-gold-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone text-gold-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-1">Phone</h4>
+                                <p class="text-gray-600">+1 (234) 567-8900<br>+1 (234) 567-8901</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-gold-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-gold-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-1">Email</h4>
+                                <p class="text-gray-600">info@gwps.com<br>admissions@gwps.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-gold-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-clock text-gold-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-1">Office Hours</h4>
+                                <p class="text-gray-600">Monday - Friday: 8:00 AM - 4:00 PM<br>Saturday: 9:00 AM - 12:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-navy-900 text-white rounded-full flex items-center justify-center hover:bg-gold-500 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-navy-900 text-white rounded-full flex items-center justify-center hover:bg-gold-500 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-navy-900 text-white rounded-full flex items-center justify-center hover:bg-gold-500 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-navy-900 text-white rounded-full flex items-center justify-center hover:bg-gold-500 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="reveal h-96 bg-gray-200 rounded-2xl overflow-hidden relative">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.30591910525!2d-74.25986652089301!3d40.69714941680757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1704061234567!5m2!1sen!2s" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-950 text-white py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-serif font-bold text-lg">GWPS</h4>
+                            <p class="text-xs text-gold-400">Golden Ways Public School</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Nurturing minds, building character, and creating future leaders since 1995.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4 text-gold-400">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#programs" class="hover:text-white transition-colors">Academic Programs</a></li>
+                        <li><a href="#admissions" class="hover:text-white transition-colors">Admissions</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4 text-gold-400">Resources</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Parent Portal</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Student Login</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Calendar</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Newsletter</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4 text-gold-400">Newsletter</h4>
+                    <p class="text-gray-400 text-sm mb-4">Subscribe to get the latest news and updates.</p>
+                    <form class="flex gap-2" onsubmit="event.preventDefault();">
+                        <input type="email" placeholder="Your email" class="flex-1 px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 text-sm">
+                        <button type="submit" class="px-4 py-2 bg-gold-500 hover:bg-gold-600 rounded-lg transition-colors">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-400 text-sm">&copy; 2024 Golden Ways Public School. All rights reserved.</p>
+                <div class="flex gap-6 text-sm text-gray-400">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-gold-500 text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-gold-600 hover:scale-110 z-40 flex items-center justify-center">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const navText = document.querySelectorAll('.nav-text');
+        const navTextSub = document.querySelector('.nav-text-sub');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+                navbar.classList.remove('py-4');
+                navbar.classList.add('py-2');
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-gray-800');
+                });
+                navText.forEach(text => {
+                    text.classList.remove('text-white');
+                    text.classList.add('text-gray-800');
+                });
+                if (navTextSub) {
+                    navTextSub.classList.remove('text-gold-200');
+                    navTextSub.classList.add('text-gold-600');
+                }
+            } else {
+                navbar.classList.remove('nav-scrolled');
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-2');
+                navLinks.forEach(link => {
+                    link.classList.add('text-white');
+                    link.classList.remove('text-gray-800');
+                });
+                navText.forEach(text => {
+                    text.classList.add('text-white');
+                    text.classList.remove('text-gray-800');
+                });
+                if (navTextSub) {
+                    navTextSub.classList.add('text-gold-200');
+                    navTextSub.classList.remove('text-gold-600');
+                }
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Back to top button
+        const backToTopBtn = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
